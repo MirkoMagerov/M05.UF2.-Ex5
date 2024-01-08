@@ -6,7 +6,56 @@ namespace Program
     {
         static void Main()
         {
+            const string MsgIndicateOption = "Escribe la letra que aparece al lado de cada opción para elegirla.";
+            const string MsgOptions = "a. Validar si un nombre és senar\nb. Calcular la potència d'un nombre\nc. Retornar un valor aleatori\nd. Comptar el nombre de vocals o consonants en un text\ne. Sortir";
+            const string MsgUserElection = "Tu elección: ";
+            const string MsgOptionASelected = "Has elegido la opción 'a'. Introduce un número para validar si es impar: ";
+            const string MsgIsOddNumber = "El {0} es un número impar.";
+            const string MsgIsNotOddNumber = "El {0} no es un número impar";
+            const string MsgOptionBSelected = "Has elegido la opción 'b', calcular la poténcia de un número.";
+            const string MsgWriteBase = "Escribe la base: ";
+            const string MsgWriteExp = "Escribe el exponente: ";
+            const string MsgOptionCSelected = "Has elegido la opción 'c', devolver un número aleatorio dentro de un rango.";
+            const string MsgMinValue = "Escribe el valor mínimo del valor aleatorio: ";
+            const string MsgMaxvalue = "Escribe el valor máximo del valor aleatorio: ";
+            const string MsgRandomNumber = "El número aleatorio escogido entre {0} y {1} es {2}.";
+            const string MsgOptionDSelected = "Has elegido la opción 'd', contar el número de letras o consonantes en un texto.";
+            const string MsgUserText = "Escribe un texto: ";
+            const string MsgVocalesYConsonantes = "El texto tiene {0} vocales y {1} consonantes.";
+            const string MsgOptionESelected = "Has elegido la opción 'e'. Salir del programa.";
 
+            string userElection;
+
+            Console.WriteLine(MsgIndicateOption);
+
+            do
+            {
+                Console.WriteLine(MsgOptions);
+                Console.Write(MsgUserElection);
+                userElection = Console.ReadLine() ?? "".Trim();
+                userElection = userElection.ToLower();
+
+            } while (!IsUserValidElection(userElection));
+
+            Console.WriteLine();
+        }
+
+        public static bool IsUserValidElection(string userElection)
+        {
+            bool validElection;
+
+            const string optionA = "a", optionB = "b", optionC = "c", optionD = "d", optionE = "e";
+
+            if (userElection == optionA || userElection == optionB || userElection == optionC || userElection == optionD || userElection == optionE)
+            {
+                validElection = true;
+            }
+            else
+            {
+                validElection = false;
+            }
+
+            return validElection;
         }
     }
 }
