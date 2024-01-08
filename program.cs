@@ -62,6 +62,28 @@ namespace Program
 
                     break;
 
+                case "b":
+                    int baseNumber, expNumber;
+
+                    Console.WriteLine(MsgOptionBSelected);
+                    do
+                    {
+                        Console.Write(MsgWriteBase);
+                        baseNumber = Convert.ToInt32(Console.ReadLine());
+
+                    } while (!IsNaturalNumber(baseNumber));
+
+                    do
+                    {
+                        Console.Write(MsgWriteExp);
+                        expNumber = Convert.ToInt32(Console.ReadLine());
+
+                    } while (!IsNaturalNumber(expNumber));
+
+                    Console.WriteLine(CalculatePow(baseNumber, expNumber));
+
+                    break;
+
                 case "e":
                     Console.WriteLine(MsgOptionESelected);
                     break;
@@ -94,6 +116,18 @@ namespace Program
         public static bool IsOddNumber(int number)
         {
             return number % 2 != 0;
+        }
+
+        public static int CalculatePow(int baseNumber, int expNumber)
+        {
+            int pow = 1;
+
+            for (int i = expNumber; i > 0; i--)
+            {
+                pow *= baseNumber;
+            }
+
+            return pow;
         }
     }
 }
