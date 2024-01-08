@@ -38,6 +38,34 @@ namespace Program
             } while (!IsUserValidElection(userElection));
 
             Console.WriteLine();
+
+            switch (userElection)
+            {
+                case "a":
+                    int number;
+
+                    do
+                    {
+                        Console.Write(MsgOptionASelected);
+                        number = Convert.ToInt32(Console.ReadLine());
+
+                    } while (!IsNaturalNumber(number));
+
+                    if (IsOddNumber(number))
+                    {
+                        Console.WriteLine(MsgIsOddNumber, number);
+                    }
+                    else
+                    {
+                        Console.WriteLine(MsgIsNotOddNumber, number);
+                    }
+
+                    break;
+
+                case "e":
+                    Console.WriteLine(MsgOptionESelected);
+                    break;
+            }
         }
 
         public static bool IsUserValidElection(string userElection)
@@ -56,6 +84,16 @@ namespace Program
             }
 
             return validElection;
+        }
+
+        public static bool IsNaturalNumber(int number)
+        {
+            return number > 0;
+        }
+
+        public static bool IsOddNumber(int number)
+        {
+            return number % 2 != 0;
         }
     }
 }
