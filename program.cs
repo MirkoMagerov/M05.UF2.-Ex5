@@ -110,6 +110,23 @@ namespace Program
 
                     break;
 
+                case "d":
+                    string userText;
+                    int vocales, consonantes;
+
+                    Console.WriteLine(MsgOptionDSelected);
+                    Console.Write(MsgUserText);
+                    userText = Console.ReadLine() ?? "".Trim();
+                    userText = userText.Replace(" ", "");
+                    userText = userText.ToLower();
+
+                    vocales = CountVocales(userText);
+                    consonantes = CountConsonantes(userText);
+
+                    Console.WriteLine(MsgVocalesYConsonantes, vocales, consonantes);
+
+                    break;
+
                 case "e":
                     Console.WriteLine(MsgOptionESelected);
                     break;
@@ -160,6 +177,42 @@ namespace Program
         {
             // Valor mínimo y máximo incluidos, para eso el +1 del final.
             return rnd.Next(minValue, maxValue + 1);
+        }
+
+        public static int CountVocales(string text)
+        {
+            const char charA = 'a', charE = 'e', charI = 'i', charO = 'o', charU = 'u';
+
+            int vocales = 0;
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (text[i] == charA || text[i] == charE || text[i] == charI || text[i] == charO || text[i] == charU)
+                {
+                    vocales++;
+                }
+            }
+
+            return vocales;
+        }
+
+        public static int CountConsonantes(string text)
+        {
+            int consonantes = 0;
+            char[] consonantesArray = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'ñ', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z' };
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                for (int j = 0; j < consonantesArray.Length; j++)
+                {
+                    if (text[i] == consonantesArray[j])
+                    {
+                        consonantes++;
+                    }
+                }
+            }
+
+            return consonantes;
         }
     }
 }
