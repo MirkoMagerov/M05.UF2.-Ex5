@@ -84,6 +84,32 @@ namespace Program
 
                     break;
 
+                case "c":
+                    Random random = new();
+                    int minValue, maxValue, randomNumber;
+
+                    Console.WriteLine(MsgOptionCSelected);
+
+                    do
+                    {
+                        Console.Write(MsgMinValue);
+                        minValue = Convert.ToInt32(Console.ReadLine());
+
+                    } while (!IsNaturalNumber(minValue));
+
+                    do
+                    {
+                        Console.Write(MsgMaxvalue);
+                        maxValue = Convert.ToInt32(Console.ReadLine());
+
+                    } while (!IsNaturalNumber(maxValue));
+
+                    randomNumber = GenerateRandomNumber(minValue, maxValue, random);
+
+                    Console.WriteLine(MsgRandomNumber, minValue, maxValue, randomNumber);
+
+                    break;
+
                 case "e":
                     Console.WriteLine(MsgOptionESelected);
                     break;
@@ -128,6 +154,12 @@ namespace Program
             }
 
             return pow;
+        }
+
+        public static int GenerateRandomNumber(int minValue, int maxValue, Random rnd)
+        {
+            // Valor mínimo y máximo incluidos, para eso el +1 del final.
+            return rnd.Next(minValue, maxValue + 1);
         }
     }
 }
